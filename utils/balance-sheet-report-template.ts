@@ -69,7 +69,7 @@ export function balanceSheetReportTemplate(
     totalCreditedAmount
   )}</td></tr><tr><td colspan="3" class="">Total Debited Amount</td><td colspan="3" class="text-end">₹ ${formatNumberToIndianReadble(
     totalDebitedAmount
-  )}</td></tr><tr><td colspan="3" class="text-primary fw-bold">Net Amount</td><td colspan="3" class="${
+  )}</td></tr><tr><td colspan="3" class="text-primary fw-bold">Balance Amount</td><td colspan="3" class="${
     balanceAmount ? "text-success" : "text-danger"
   } ' fw-bold" style="text-align:right">₹ ${formatNumberToIndianReadble(
     balanceAmount

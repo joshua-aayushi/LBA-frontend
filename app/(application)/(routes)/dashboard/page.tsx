@@ -36,18 +36,23 @@ function isDateInCurrentMonth(inputDateString: string): boolean {
 
 function getGraphData(customers: Customer[]) {
   const graphData = dummyGraphData;
+  const currentYear = new Date().getFullYear();
+
   customers.forEach(customer => {
     customer.trips?.forEach(trip => {
       const tripDate = new Date(trip.primaryDetails.date);
-      const monthIndex = tripDate.getMonth();
-      // Assuming totalAmount is the income from the trip
-      graphData[monthIndex].income += trip.financeDetails.totalAmount;
-      graphData[monthIndex].expense += (trip.expenseDetails?.totalAmount ?? 0);
-      graphData[monthIndex].trips += 1
+      const tripYear = tripDate.getFullYear();
+
+      if (tripYear === currentYear) {
+        const monthIndex = tripDate.getMonth();
+        graphData[monthIndex].income += trip.financeDetails.totalAmount;
+        graphData[monthIndex].expense += (trip.expenseDetails?.totalAmount ?? 0);
+        graphData[monthIndex].trips += 1;
+      }
     });
   });
 
-  return graphData
+  return graphData;
 }
 
 async function getTrips(){
